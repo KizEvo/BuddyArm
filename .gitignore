@@ -1,2 +1,5 @@
 *.doc*
 *.FCBak
+build
+install
+log
