@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="myfirst">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="BuddyArm">
   <link name="base_link">
     <visual>
       <geometry>
