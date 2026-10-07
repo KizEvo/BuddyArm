@@ -8,7 +8,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     urdf_path = FindPackageShare('buddyarm_urdf')
-    default_model_path = PathJoinSubstitution(['src', 'robot_arm.urdf'])
+    default_model_path = PathJoinSubstitution(['src', 'robot_arm.urdf.xacro'])
     default_rviz_config_path = PathJoinSubstitution([urdf_path, 'src', 'urdf.rviz'])
 
     # These parameters are maintained for backwards compatibility
