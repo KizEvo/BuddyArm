@@ -1,10 +1,84 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="BuddyArm">
-  <link name="base_link">
+
+  <!--
+  =============================================================
+                              LINKS
+  Origin values based on FreeCAD assembly translation and
+  rotation
+  =============================================================
+   -->
+
+  <link name="mcu_base_link">
     <visual>
       <geometry>
-        <cylinder length="0.6" radius="0.2"/>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-Base.dae"/>
       </geometry>
     </visual>
   </link>
+
+  <link name="j1_base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Base.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="j1_turret_housing_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Turret_Housing.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="j1_platform_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Platform.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="j1_spindle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Spindle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!--
+  =============================================================
+                              JOINTs
+  Origin values based on FreeCAD assembly translation and
+  rotation
+  - mcu_base is the origin positon 0,0,0
+  =============================================================
+   -->
+  <joint name="mcu_base_to_j1_base_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j1_base_link"/>
+    <origin xyz="0 0.075 0.018"/>
+  </joint>
+
+  <joint name="mcu_base_to_j1_turret_housing_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j1_turret_housing_link"/>
+    <origin xyz="0 0.225 0.025"/>
+  </joint>
+
+  <joint name="mcu_base_to_j1_spindle_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j1_spindle_link"/>
+    <origin xyz="0 0.225 -0.007"/>
+  </joint>
+
+  <joint name="mcu_base_to_j1_platform_link" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j1_platform_link"/>
+    <origin xyz="0 0.225 0.090"/>
+  </joint>
+
 </robot>

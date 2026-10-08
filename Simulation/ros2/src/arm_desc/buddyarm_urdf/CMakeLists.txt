@@ -12,7 +12,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 install(
-  DIRECTORY launch src
+  DIRECTORY launch src mesh
   DESTINATION share/${PROJECT_NAME}
 )
 
