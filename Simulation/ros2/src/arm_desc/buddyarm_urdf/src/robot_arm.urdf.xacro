@@ -81,6 +81,22 @@
     </visual>
   </link>
 
+  <link name="j3_bearing_cup_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J3_Bearing_Cup.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="j3_spindle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J3_Spindle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
   <!--
   =============================================================
                               JOINTs
@@ -137,6 +153,18 @@
     <parent link="mcu_base_link"/>
     <child link="j2_arm_link"/>
     <origin rpy="${pi/2} 0 0" xyz="-0.056 0.315 0.110"/>
+  </joint>
+
+  <joint name="mcu_base_to_j3_bearing_cup_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j3_bearing_cup_link"/>
+    <origin rpy="0 ${-pi/2} 0" xyz="-0.024 0.285 0.373"/>
+  </joint>
+
+  <joint name="mcu_base_to_j3_spindle_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j3_spindle_link"/>
+    <origin rpy="${pi} ${pi/2} 0" xyz="-0.004 0.285 0.373"/>
   </joint>
 
 </robot>
