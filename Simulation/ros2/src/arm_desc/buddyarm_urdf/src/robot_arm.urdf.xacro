@@ -113,6 +113,22 @@
     </visual>
   </link>
 
+  <link name="j5_arm_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J5_Arm.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="j5_spindle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J5_Spindle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
   <!--
   =============================================================
                               JOINTs
@@ -193,6 +209,18 @@
     <parent link="mcu_base_link"/>
     <child link="j4_spindle_link"/>
     <origin rpy="${pi/2} ${pi/2} 0" xyz="-0.023 0.347 0.430"/>
+  </joint>
+
+  <joint name="mcu_base_to_j5_arm_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j5_arm_link"/>
+    <origin rpy="0 0 0" xyz="-0.040 0.347 0.409"/>
+  </joint>
+
+  <joint name="mcu_base_to_j5_spindle_joint" type="fixed">
+    <parent link="mcu_base_link"/>
+    <child link="j5_spindle_link"/>
+    <origin rpy="${pi/2} 0 ${pi/2}" xyz="-0.043 0.454 0.430"/>
   </joint>
 
 </robot>
