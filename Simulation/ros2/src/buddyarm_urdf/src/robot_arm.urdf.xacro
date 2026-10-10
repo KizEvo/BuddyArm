@@ -137,6 +137,22 @@
     </visual>
   </link>
 
+  <link name="j6_motor_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-11HS20-0674D-EGS16-J6-Motor.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="end_effector">
+    <visual>
+      <geometry>
+        <cylinder length="0.01" radius="0.02"/>
+      </geometry>
+    </visual>
+  </link>
+
   <!--
   =============================================================
                               JOINTs
@@ -247,6 +263,18 @@
     <origin rpy="0 0 0" xyz="0 0 0.0250"/>
   </joint>
 
-  <!-- TODO: joint type revolute, add this when we have end-effector CAD -->
-  <!-- TODO: end-effector -->
+  <joint name="j6_arm_to_j6_motor_joint" type="fixed">
+    <parent link="j6_arm_link"/>
+    <child link="j6_motor_link"/>
+    <origin rpy="${-pi/2} 0 ${pi/2}" xyz="0.0620 0.0019 0.0262"/>
+  </joint>
+
+  <joint name="j6_motor_to_end_effector_joint" type="revolute">
+    <parent link="j6_motor_link"/>
+    <child link="end_effector"/>
+    <origin rpy="0.000000 0.000000 ${-pi}" xyz="-0.0019 0.0002 -0.0660"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+  </joint>
+
 </robot>
