@@ -17,6 +17,40 @@ Visualization Manager:
     - Class: rviz_default_plugins/TF
       Name: TF
       Value: true
+      Frames:
+        All Enabled: false
+        mcu_base_link:
+          Value: true
+        j1_spindle_link:
+          Value: true
+        j2_spindle_link:
+          Value: true
+        j3_spindle_link:
+          Value: true
+        j4_spindle_link:
+          Value: true
+        j5_spindle_link:
+          Value: true
+        j1_base_link:
+          Value: false
+        j1_platform_link:
+          Value: false
+        j1_turret_housing_link:
+          Value: false
+        j2_arm_link:
+          Value: false
+        j2_tension_ring_link:
+          Value: false
+        j2_turret_housing_link:
+          Value: false
+        j3_bearing_cup_link:
+          Value: false
+        j4_turret_housing_link:
+          Value: false
+        j5_arm_link:
+          Value: false
+        j6_arm_link:
+          Value: false
   Global Options:
     Fixed Frame: mcu_base_link
   Tools:
