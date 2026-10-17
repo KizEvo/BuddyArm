@@ -3,6 +3,21 @@
 
   <!--
   =============================================================
+                              MACROs
+  =============================================================
+  -->
+  <!-- Params: box: depth/width/heigh and origin xyz -->
+  <xacro:macro name="collision_ele" params="d w h x y z roll pitch yaw">
+    <collision>
+      <geometry>
+        <box size="${d} ${w} ${h}"/>
+      </geometry>
+      <origin rpy="${roll} ${pitch} ${yaw}" xyz="${x} ${y} ${z}"/>
+    </collision>
+  </xacro:macro>
+
+  <!--
+  =============================================================
                               LINKS
   Origin values based on FreeCAD assembly translation and
   rotation
@@ -15,6 +30,7 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-Base.dae"/>
       </geometry>
     </visual>
+    <xacro:collision_ele d="0.150" w="0.370" h="0.018" x="0" y="0.110" z="0.009" roll="0" pitch="0" yaw="0"/>
   </link>
 
   <link name="j1_base_link">
@@ -31,6 +47,7 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Turret_Housing.dae"/>
       </geometry>
     </visual>
+    <xacro:collision_ele d="0.089" w="0.089" h="0.064" x="0" y="0" z="0.032" roll="0" pitch="0" yaw="0"/>
   </link>
 
   <link name="j1_platform_link">
@@ -55,6 +72,7 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Arm.dae"/>
       </geometry>
     </visual>
+    <xacro:collision_ele d="0.076" w="0.203" h="0.060" x="0.0382" y="0.1452" z="0.0300" roll="0" pitch="0" yaw="0"/>
   </link>
 
   <link name="j2_spindle_link">
@@ -103,6 +121,7 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J4_Turret_Housing.dae"/>
       </geometry>
     </visual>
+    <xacro:collision_ele d="0.060" w="0.042" h="0.044" x="-0.0570" y="0.0320" z="-0.0100" roll="0" pitch="${pi/2}" yaw="${pi/2}"/>
   </link>
 
   <link name="j4_spindle_link">
@@ -119,6 +138,7 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J5_Arm.dae"/>
       </geometry>
     </visual>
+    <xacro:collision_ele d="0.125" w="0.042" h="0.020" x="0.002" y="0.0624" z="0.021" roll="${-pi/2}" pitch="0" yaw="${-pi/2}"/>
   </link>
 
   <link name="j5_spindle_link">
@@ -135,6 +155,7 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J6_Arm.dae"/>
       </geometry>
     </visual>
+    <xacro:collision_ele d="0.042" w="0.030" h="0.126" x="0.0450" y="0" z="0.0210" roll="0" pitch="${-pi/2}" yaw="${-pi}"/>
   </link>
 
   <link name="j6_motor_link">
@@ -150,7 +171,15 @@
       <geometry>
         <cylinder length="0.01" radius="0.02"/>
       </geometry>
+      <material name="Cyan">
+        <color rgba="0 1.0 1.0 1.0"/>
+      </material>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.01" radius="0.02"/>
+      </geometry>
+    </collision>
   </link>
 
   <!--
