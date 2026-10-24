@@ -30,32 +30,19 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-Base.dae"/>
       </geometry>
     </visual>
-    <xacro:collision_ele d="0.150" w="0.370" h="0.018" x="0" y="0.110" z="0.009" roll="0" pitch="0" yaw="0"/>
-  </link>
-
-  <link name="j1_base_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Base.dae"/>
       </geometry>
+      <origin xyz="0 0.075 0.018"/>
     </visual>
-  </link>
-
-  <link name="j1_turret_housing_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Turret_Housing.dae"/>
       </geometry>
+      <origin xyz="0 0.225 0.025"/>
     </visual>
-    <xacro:collision_ele d="0.089" w="0.089" h="0.064" x="0" y="0" z="0.032" roll="0" pitch="0" yaw="0"/>
-  </link>
-
-  <link name="j1_platform_link">
-    <visual>
-      <geometry>
-        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Platform.dae"/>
-      </geometry>
-    </visual>
+    <xacro:collision_ele d="0.150" w="0.370" h="0.018" x="0" y="0.110" z="0.009" roll="0" pitch="0" yaw="0"/>
   </link>
 
   <link name="j1_spindle_link">
@@ -64,15 +51,19 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Spindle.dae"/>
       </geometry>
     </visual>
-  </link>
-
-  <link name="j2_arm_link">
     <visual>
       <geometry>
-        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Arm.dae"/>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J1_Platform.dae"/>
       </geometry>
+      <origin xyz="0 0 0.097"/>
     </visual>
-    <xacro:collision_ele d="0.076" w="0.203" h="0.060" x="0.0382" y="0.1452" z="0.0300" roll="0" pitch="0" yaw="0"/>
+    <visual>
+      <geometry>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Turret_Housing.dae"/>
+      </geometry>
+      <origin rpy="${pi/2} -0.000000 ${-pi/2}" xyz="-0.0210 0.0200 0.0970"/>
+    </visual>
+    <xacro:collision_ele d="0.089" w="0.089" h="0.064" x="0" y="0" z="0.064" roll="0" pitch="0" yaw="0"/>
   </link>
 
   <link name="j2_spindle_link">
@@ -81,30 +72,25 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Spindle.dae"/>
       </geometry>
     </visual>
-  </link>
-
-  <link name="j2_tension_ring_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Tension_Ring.dae"/>
       </geometry>
+      <origin rpy="${-pi} -0.000000 0.000000" xyz="0.0000 -0.0000 0.0710"/>
     </visual>
-  </link>
-
-  <link name="j2_turret_housing_link">
     <visual>
       <geometry>
-        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Turret_Housing.dae"/>
+        <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J2_Arm.dae"/>
       </geometry>
+      <origin rpy="0.000000 ${-pi/2} -0.000000" xyz="0.0300 -0.0300 0.0050"/>
     </visual>
-  </link>
-
-  <link name="j3_bearing_cup_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J3_Bearing_Cup.dae"/>
       </geometry>
+      <origin rpy="${-pi} 0.000000 ${pi/2}" xyz="0.0000 0.2330 0.0370"/>
     </visual>
+    <xacro:collision_ele d="0.076" w="0.163" h="0.060" x="0" y="0.1152" z="0.0432" roll="0" pitch="${-pi/2}" yaw="0"/>
   </link>
 
   <link name="j3_spindle_link">
@@ -113,15 +99,13 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J3_Spindle.dae"/>
       </geometry>
     </visual>
-  </link>
-
-  <link name="j4_turret_housing_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J4_Turret_Housing.dae"/>
       </geometry>
+      <origin rpy="${-pi} 0 0" xyz="0 0 0"/>
     </visual>
-    <xacro:collision_ele d="0.060" w="0.042" h="0.044" x="-0.0570" y="0.0320" z="-0.0100" roll="0" pitch="${pi/2}" yaw="${pi/2}"/>
+    <xacro:collision_ele d="0.060" w="0.042" h="0.044" x="-0.0570" y="-0.0320" z="0.0100" roll="0" pitch="${-pi/2}" yaw="${pi/2}"/>
   </link>
 
   <link name="j4_spindle_link">
@@ -130,15 +114,13 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J4_Spindle.dae"/>
       </geometry>
     </visual>
-  </link>
-
-  <link name="j5_arm_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J5_Arm.dae"/>
       </geometry>
+      <origin rpy="${-pi/2} -0.000000 ${pi/2}" xyz="0.0210 -0.0170 -0.0000"/>
     </visual>
-    <xacro:collision_ele d="0.125" w="0.042" h="0.020" x="0.002" y="0.0624" z="0.021" roll="${-pi/2}" pitch="0" yaw="${-pi/2}"/>
+    <xacro:collision_ele d="0.125" w="0.042" h="0.020" x="0" y="-0.0150" z="-0.0624" roll="0" pitch="${-pi/2}" yaw="${-pi/2}"/>
   </link>
 
   <link name="j5_spindle_link">
@@ -147,23 +129,19 @@
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J5_Spindle.dae"/>
       </geometry>
     </visual>
-  </link>
-
-  <link name="j6_arm_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-J6_Arm.dae"/>
       </geometry>
+      <origin rpy="0.000000 -0.000000 0.000000" xyz="0.0000 -0.0000 0.0250"/>
     </visual>
-    <xacro:collision_ele d="0.042" w="0.030" h="0.126" x="0.0450" y="0" z="0.0210" roll="0" pitch="${-pi/2}" yaw="${-pi}"/>
-  </link>
-
-  <link name="j6_motor_link">
     <visual>
       <geometry>
         <mesh filename="package://buddyarm_urdf/mesh/buddy_arm-11HS20-0674D-EGS16-J6-Motor.dae"/>
       </geometry>
+      <origin rpy="${-pi/2} -0.000000 ${pi/2}" xyz="0.0620 0.0019 0.0512"/>
     </visual>
+    <xacro:collision_ele d="0.042" w="0.030" h="0.126" x="0.0450" y="0" z="0.0460" roll="0" pitch="${-pi/2}" yaw="${-pi}"/>
   </link>
 
   <link name="end_effector">
@@ -192,116 +170,51 @@
    grep for 'zero pose' commit.
   =============================================================
    -->
-  <joint name="mcu_base_to_j1_base_joint" type="fixed">
-    <parent link="mcu_base_link"/>
-    <child link="j1_base_link"/>
-    <origin xyz="0 0.075 0.018"/>
-  </joint>
 
-  <joint name="mcu_base_to_j1_turret_housing_joint" type="fixed">
+  <joint name="j1" type="revolute">
     <parent link="mcu_base_link"/>
-    <child link="j1_turret_housing_link"/>
-    <origin xyz="0 0.225 0.025"/>
-  </joint>
-
-  <joint name="j1_base_to_j1_spindle_joint" type="revolute">
-    <parent link="j1_base_link"/>
     <child link="j1_spindle_link"/>
-    <origin xyz="0 0.150 -0.025"/>
+    <origin rpy="0.000000 -0.000000 0.000000" xyz="0.0000 0.2250 -0.0070"/>
     <axis xyz="0 0 1"/>
     <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
   </joint>
 
-  <joint name="j1_spindle_to_j1_platform_joint" type="fixed">
+  <joint name="j2" type="revolute">
     <parent link="j1_spindle_link"/>
-    <child link="j1_platform_link"/>
-    <origin xyz="0 0 0.097"/>
-  </joint>
-
-  <joint name="j1_platform_to_j2_turret_housing_joint" type="fixed">
-    <parent link="j1_platform_link"/>
-    <child link="j2_turret_housing_link"/>
-    <origin rpy="${pi/2} 0 ${-pi/2}" xyz="-0.021 0.020 0"/>
-  </joint>
-
-  <joint name="j2_turret_housing_to_j2_spindle_joint" type="revolute">
-    <parent link="j2_turret_housing_link"/>
     <child link="j2_spindle_link"/>
-    <origin rpy="${pi} 0 ${pi}" xyz="-0.040 0.050 0.040"/>
+    <origin rpy="${pi/2} -0.000000 ${pi/2}" xyz="-0.0610 0.0600 0.1470"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi/5}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${pi/7}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
   </joint>
 
-  <joint name="j2_spindle_to_j2_tension_ring_joint" type="fixed">
+  <joint name="j3" type="revolute">
     <parent link="j2_spindle_link"/>
-    <child link="j2_tension_ring_link"/>
-    <origin rpy="${-pi} 0 0" xyz="0 0 0.0710"/>
-  </joint>
-
-  <joint name="j2_spindle_to_j2_arm_joint" type="fixed">
-    <parent link="j2_spindle_link"/>
-    <child link="j2_arm_link"/>
-    <origin rpy="0 ${-pi/2} -0" xyz="0.0300 -0.0300 0.0050"/>
-  </joint>
-
-  <joint name="j2_arm_to_j3_bearing_cup_joint" type="fixed">
-    <parent link="j2_arm_link"/>
-    <child link="j3_bearing_cup_link"/>
-    <origin rpy="${-pi/2} 0 ${pi/2}" xyz="0.0320 0.2630 0.0300"/>
-  </joint>
-
-  <joint name="j3_bearing_cup_to_j3_spindle_joint" type="revolute">
-    <parent link="j3_bearing_cup_link"/>
     <child link="j3_spindle_link"/>
-    <origin rpy="0 0 ${pi}" xyz="0 0 -0.0200"/>
+    <origin rpy="${pi} -0.000000 ${-pi/2}" xyz="0.0000 0.2330 0.0570"/>
     <axis xyz="0 0 1"/>
     <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
   </joint>
 
-  <joint name="j3_spindle_to_j4_turret_housing_joint" type="fixed">
+  <joint name="j4" type="revolute">
     <parent link="j3_spindle_link"/>
-    <child link="j4_turret_housing_link"/>
-    <origin rpy="${-pi} 0 0" xyz="0 0 0"/>
-  </joint>
-
-  <joint name="j4_turret_housing_to_j4_spindle_joint" type="revolute">
-    <parent link="j4_turret_housing_link"/>
     <child link="j4_spindle_link"/>
-    <origin rpy="${pi/2} 0 0" xyz="-0.0570 0.0620 -0.0190"/>
+    <origin rpy="${-pi/2} -0.000000 0.000000" xyz="-0.0570 -0.0620 0.0190"/>
     <axis xyz="0 0 1"/>
     <limit lower="${pi * 1.5}" upper="${-pi * 1.5}" effort="1000.0" velocity="0.2"/>
   </joint>
 
-  <joint name="j4_spindle_to_j5_arm_joint" type="fixed">
+  <joint name="j5" type="revolute">
     <parent link="j4_spindle_link"/>
-    <child link="j5_arm_link"/>
-    <origin rpy="${-pi/2} 0 ${pi/2}" xyz="0.0210 -0.0170 0"/>
-  </joint>
-
-  <joint name="j5_arm_to_j5_spindle_joint" type="revolute">
-    <parent link="j5_arm_link"/>
     <child link="j5_spindle_link"/>
-    <origin rpy="${pi/2} 0 ${pi/2}" xyz="0.0030 0.1075 0.0210"/>
+    <origin rpy="0.000000 ${pi/2} ${pi/2}" xyz="-0.0000 -0.0200 -0.1075"/>
     <axis xyz="0 0 1"/>
     <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
   </joint>
 
-  <joint name="j5_spindle_to_j6_arm_joint" type="fixed">
+  <joint name="j6" type="revolute">
     <parent link="j5_spindle_link"/>
-    <child link="j6_arm_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.0250"/>
-  </joint>
-
-  <joint name="j6_arm_to_j6_motor_joint" type="fixed">
-    <parent link="j6_arm_link"/>
-    <child link="j6_motor_link"/>
-    <origin rpy="${-pi/2} 0 ${pi/2}" xyz="0.0620 0.0019 0.0262"/>
-  </joint>
-
-  <joint name="j6_motor_to_end_effector_joint" type="revolute">
-    <parent link="j6_motor_link"/>
     <child link="end_effector"/>
-    <origin rpy="0.000000 0.000000 ${-pi}" xyz="-0.0019 0.0002 -0.0660"/>
+    <origin rpy="${pi/2} -0.000000 ${-pi/2}" xyz="0.1280 -0.0000 0.0510"/>
     <axis xyz="0 0 1"/>
     <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
   </joint>
