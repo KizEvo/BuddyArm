@@ -176,7 +176,7 @@
     <child link="j1_spindle_link"/>
     <origin rpy="0.000000 -0.000000 0.000000" xyz="0.0000 0.2250 -0.0070"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${-pi/2}" upper="${pi/2}" effort="1000.0" velocity="1.0"/>
   </joint>
 
   <joint name="j2" type="revolute">
@@ -184,7 +184,7 @@
     <child link="j2_spindle_link"/>
     <origin rpy="${pi/2} -0.000000 ${pi/2}" xyz="-0.0610 0.0600 0.1470"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi/7}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${-pi/7}" upper="${pi/2}" effort="1000.0" velocity="1.0"/>
   </joint>
 
   <joint name="j3" type="revolute">
@@ -192,7 +192,7 @@
     <child link="j3_spindle_link"/>
     <origin rpy="${pi} -0.000000 ${-pi/2}" xyz="0.0000 0.2330 0.0570"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${-pi/2}" upper="${pi/2}" effort="1000.0" velocity="1.0"/>
   </joint>
 
   <joint name="j4" type="revolute">
@@ -200,7 +200,7 @@
     <child link="j4_spindle_link"/>
     <origin rpy="${-pi/2} -0.000000 0.000000" xyz="-0.0570 -0.0620 0.0190"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi * 1.5}" upper="${-pi * 1.5}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${-pi * 1.5}" upper="${pi * 1.5}" effort="1000.0" velocity="1.0"/>
   </joint>
 
   <joint name="j5" type="revolute">
@@ -208,7 +208,7 @@
     <child link="j5_spindle_link"/>
     <origin rpy="0.000000 ${pi/2} ${pi/2}" xyz="-0.0000 -0.0200 -0.1075"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${-pi/2}" upper="${pi/2}" effort="1000.0" velocity="1.0"/>
   </joint>
 
   <joint name="j6" type="revolute">
@@ -216,7 +216,7 @@
     <child link="end_effector"/>
     <origin rpy="${pi/2} -0.000000 ${-pi/2}" xyz="0.1280 -0.0000 0.0510"/>
     <axis xyz="0 0 1"/>
-    <limit lower="${pi/2}" upper="${-pi/2}" effort="1000.0" velocity="0.2"/>
+    <limit lower="${-pi/2}" upper="${pi/2}" effort="1000.0" velocity="1.0"/>
   </joint>
 
 </robot>
