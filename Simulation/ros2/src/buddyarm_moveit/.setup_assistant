@@ -1,0 +1,23 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: buddyarm_urdf
+    relative_path: src/robot_arm.urdf.xacro
+  srdf:
+    relative_path: config/BuddyArm.srdf
+  package_settings:
+    author_name: Phu Duc Nguyen
+    author_email: vandungqc03@gmail.com
+    generated_timestamp: 1792840786
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
