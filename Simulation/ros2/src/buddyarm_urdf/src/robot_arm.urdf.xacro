@@ -6,7 +6,9 @@
                               MACROs
   =============================================================
   -->
-  <!-- Params: box: depth/width/heigh and origin xyz -->
+  <xacro:property name="kgm2" value="1e-9" />
+
+  <!-- Params: box: depth/width/heigh, origin: xyz and rotation: roll pitch yaw -->
   <xacro:macro name="collision_ele" params="d w h x y z roll pitch yaw">
     <collision>
       <geometry>
@@ -14,6 +16,15 @@
       </geometry>
       <origin rpy="${roll} ${pitch} ${yaw}" xyz="${x} ${y} ${z}"/>
     </collision>
+  </xacro:macro>
+
+  <!-- Params: origin: xyz (in m), mass: mass (in kg) and moments of inertia: i (in g*mm^2) -->
+  <xacro:macro name="inertial_ele" params="x y z roll pitch yaw mass ixx ixy ixz iyy iyz izz">
+    <inertial>
+      <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
+      <mass value="${mass}"/>
+      <inertia ixx="${ixx * kgm2}" ixy="${ixy * kgm2}" ixz="${ixz * kgm2}" iyy="${iyy * kgm2}" iyz="${iyz * kgm2}" izz="${izz * kgm2}"/>
+    </inertial>
   </xacro:macro>
 
   <!--
@@ -42,6 +53,7 @@
       </geometry>
       <origin xyz="0 0.225 0.025"/>
     </visual>
+    <xacro:inertial_ele x="0" y="0.1243" z="0.0332" roll="0" pitch="0" yaw="0" mass="2.25" ixx="14394179" ixy="0" ixz="0" iyy="5065300" iyz="1391178" izz="16481870"/>
     <xacro:collision_ele d="0.150" w="0.370" h="0.018" x="0" y="0.110" z="0.009" roll="0" pitch="0" yaw="0"/>
   </link>
 
@@ -63,6 +75,7 @@
       </geometry>
       <origin rpy="${pi/2} -0.000000 ${-pi/2}" xyz="-0.0210 0.0200 0.0970"/>
     </visual>
+    <xacro:inertial_ele x="-0.0081" y="0.0161" z="0.0945" roll="0" pitch="0" yaw="0" mass="0.548" ixx="175332" ixy="0" ixz="-613" iyy="175485" iyz="0" izz="32314"/>
     <xacro:collision_ele d="0.089" w="0.089" h="0.064" x="0" y="0" z="0.064" roll="0" pitch="0" yaw="0"/>
   </link>
 
@@ -90,6 +103,7 @@
       </geometry>
       <origin rpy="${-pi} 0.000000 ${pi/2}" xyz="0.0000 0.2330 0.0370"/>
     </visual>
+    <xacro:inertial_ele x="-0.0002" y="0.0870" z="0.0344" roll="0" pitch="${-pi/2}" yaw="${-pi/2}" mass="0.803" ixx="18023" ixy="0" ixz="0" iyy="6903" iyz="-279" izz="11196"/>
     <xacro:collision_ele d="0.076" w="0.163" h="0.060" x="0" y="0.1152" z="0.0432" roll="0" pitch="${-pi/2}" yaw="0"/>
   </link>
 
@@ -105,6 +119,7 @@
       </geometry>
       <origin rpy="${-pi} 0 0" xyz="0 0 0"/>
     </visual>
+    <xacro:inertial_ele x="-0.0177" y="-0.0071" z="-0.0088" roll="0" pitch="${pi/2}" yaw="${-pi}" mass="0.284" ixx="38381" ixy="0" ixz="0" iyy="23140" iyz="0" izz="23140"/>
     <xacro:collision_ele d="0.060" w="0.042" h="0.044" x="-0.0570" y="-0.0320" z="0.0100" roll="0" pitch="${-pi/2}" yaw="${pi/2}"/>
   </link>
 
@@ -120,6 +135,7 @@
       </geometry>
       <origin rpy="${-pi/2} -0.000000 ${pi/2}" xyz="0.0210 -0.0170 -0.0000"/>
     </visual>
+    <xacro:inertial_ele x="0" y="-0.0105" z="-0.0464" roll="${-pi/2}" pitch="0" yaw="${pi/2}" mass="0.187" ixx="6949" ixy="0" ixz="0" iyy="2200" iyz="0" izz="6949"/>
     <xacro:collision_ele d="0.125" w="0.042" h="0.020" x="0" y="-0.0150" z="-0.0624" roll="0" pitch="${-pi/2}" yaw="${-pi/2}"/>
   </link>
 
@@ -141,6 +157,7 @@
       </geometry>
       <origin rpy="${-pi/2} -0.000000 ${pi/2}" xyz="0.0620 0.0019 0.0512"/>
     </visual>
+    <xacro:inertial_ele x="0.0473" y="0.0010" z="0.0420" roll="0" pitch="${-pi/2}" yaw="${-pi/2}" mass="0.331" ixx="1843" ixy="0" ixz="0" iyy="2320" iyz="0" izz="2320"/>
     <xacro:collision_ele d="0.042" w="0.030" h="0.126" x="0.0450" y="0" z="0.0460" roll="0" pitch="${-pi/2}" yaw="${-pi}"/>
   </link>
 
@@ -158,6 +175,8 @@
         <cylinder length="0.01" radius="0.02"/>
       </geometry>
     </collision>
+    <!-- z 0.005 -->
+    <xacro:inertial_ele x="0" y="0" z="0" roll="${-pi/2}" pitch="0" yaw="${pi/2}" mass="0.033" ixx="3675" ixy="0" ixz="0" iyy="6785" iyz="0" izz="3675"/>
   </link>
 
   <!--
