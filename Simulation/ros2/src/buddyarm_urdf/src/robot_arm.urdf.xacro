@@ -35,6 +35,8 @@
   =============================================================
    -->
 
+  <link name="world"/>
+
   <link name="mcu_base_link">
     <visual>
       <geometry>
@@ -189,6 +191,11 @@
    grep for 'zero pose' commit.
   =============================================================
    -->
+
+  <joint name="base" type="fixed">
+      <parent link="world"/>
+      <child link="mcu_base_link"/>
+  </joint>
 
   <joint name="j1" type="revolute">
     <parent link="mcu_base_link"/>
