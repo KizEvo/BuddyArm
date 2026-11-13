@@ -1,0 +1,4 @@
+# Change use_gazebo parameter (true or false) to launch your desired simulation
+
+user_cfg:
+  use_gazebo: false
