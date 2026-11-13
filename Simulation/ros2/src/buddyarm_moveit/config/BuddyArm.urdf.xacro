@@ -2,13 +2,30 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="BuddyArm">
     <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
 
+    <xacro:arg name="user_cfg_file" default="user_cfg.yaml" />
+    <xacro:property name="user_cfg" value="${xacro.load_yaml('$(arg user_cfg_file)')['user_cfg']}" />
+
     <!-- Import BuddyArm urdf file -->
     <xacro:include filename="$(find buddyarm_urdf)/src/robot_arm.urdf.xacro" />
 
     <!-- Import control_xacro -->
     <xacro:include filename="BuddyArm.ros2_control.xacro" />
 
+    <!-- IF (user want to use Gazebo simulation) -->
+    <xacro:if value="${user_cfg['use_gazebo']}">
+        <xacro:BuddyArm_ros2_control name="GazeboSystem" initial_positions_file="$(arg initial_positions_file)" plugin_name="gz_ros2_control/GazeboSimSystem"/>
 
-    <xacro:BuddyArm_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+        <!-- Gazebo simulation specific plugins - also loads ros2 controllers -->
+        <gazebo>
+            <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+                <parameters>$(find buddyarm_moveit)/config/ros2_controllers.yaml</parameters>
+            </plugin>
+        </gazebo>
+    </xacro:if>
+    <!-- ELSE (user want to use MoveIt2 and RViz simulation) -->
+    <xacro:unless value="${user_cfg['use_gazebo']}">
+        <!-- By default, use 'mock_components/GenericSystem' plugin for MoveIt2 and RViz, it set up controllers for simulation. This won't work on real hardware -->
+        <xacro:BuddyArm_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)" plugin_name="mock_components/GenericSystem"/>
+    </xacro:unless>
 
 </robot>
