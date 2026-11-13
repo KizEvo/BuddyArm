@@ -1,3 +1,4 @@
+import yaml
 import os
 
 from moveit_configs_utils import MoveItConfigsBuilder 
@@ -43,9 +44,19 @@ def generate_launch_description():
 
     launch_package_path = moveit_config.package_path
 
-    ld.add_action(DeclareBooleanLaunchArg("use_rviz", default_value=True))
+    # ============================ SANITY CHECK =============================
+
+    # If we don't use the correct xacro, now
+    config_path = os.path.join(launch_package_path, "config", "user_cfg.yaml")
+    with open(config_path, "r") as file:
+        config = yaml.safe_load(file) or {}
+    use_gazebo = config.get("user_cfg", {}).get("use_gazebo", False)
+    if not use_gazebo:
+        raise RuntimeError("Incorrect user config, see config/README.md")
 
     # ============================ MoveIt2 LAUNCH ============================
+
+    ld.add_action(DeclareBooleanLaunchArg("use_rviz", default_value=True))
 
     # If there are virtual joints, broadcast static tf by including virtual_joints launch
     virtual_joints_launch = (
@@ -90,6 +101,19 @@ def generate_launch_description():
     # Spawn controllers
     # 1. joint_state_broadcaster
     # 2. buddyarm_controller
+    ld.add_action(
+        Node(
+            package="controller_manager",
+            executable="spawner",
+            name="controller_spawner",
+            parameters=[
+                str(moveit_config.package_path / "config/ros2_controllers.yaml"),
+            ],
+            remappings=[
+                ("/controller_manager/robot_description", "/robot_description"),
+            ],
+        )
+    )
     ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
